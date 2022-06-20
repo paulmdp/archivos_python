@@ -27,9 +27,14 @@ def ej3():
     # para cumplir con el enunciado del ejercicio
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
-    
-
-
+    csvstock = open(archivo, 'r')
+    stock = list(csv.DictReader(csvstock))
+    total_tornillos = 0
+    for registro in range(len(stock)):
+        row = stock[registro]
+        total_tornillos += int(row.get('tornillos'))    
+    print('Stock total de tornillos:', total_tornillos)
+     
 def ej4():
     print('Ejercicios con archivos CSV 2º')
     archivo = 'propiedades.csv'
@@ -47,7 +52,27 @@ def ej4():
     # utilizando "try except", tema que se verá la clase que viene.
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
-
+    csvprop = open(archivo, 'r')
+    prop = list(csv.DictReader(csvprop))
+    deptos_2a = 0
+    deptos_3a = 0
+       
+    for registro in range(len(prop)):
+        row = prop[registro]
+        try:
+            if(int(row.get('ambientes'))==2):
+                deptos_2a += 1
+            if(int(row.get('ambientes'))==3):
+                deptos_3a += 1
+        except:
+            print("ups! Valor vacio")
+            
+    print("Departamentos con 2 ambientes:", deptos_2a)
+    print("Departamentos con 3 ambientes:", deptos_3a)
+           
+            
+        
+        
 
 if __name__ == '__main__':
     print("Bienvenidos a otra clase de Inove con Python")

@@ -10,6 +10,8 @@
 # Ejercicios con diccionarios
 
 import csv
+from operator import truediv
+import os
 
 
 def ej1():
@@ -18,7 +20,8 @@ def ej1():
     # el diccionario vacio debe llamarse "stock"
     
     # stock = ....
-
+    stock={}
+    
     # Luego de crear el diccionario completelo
     # con el siguiente stock:
     # tornillos = 100
@@ -32,7 +35,11 @@ def ej1():
     # Una vez armado el diccionario imprimirlo en pantalla con print
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
-
+    stock={"tornillos":100, "tuercas":150, "arandelas":300}
+    print(stock)
+    
+    
+    
 
 def ej2():
     print('Ejercicio con diccionarios 2º')
@@ -66,9 +73,30 @@ def ej2():
     # imprimir en pantalla con print el diccionario con el stock final
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
-
+    encontrado=False
+    while(True):
+        producto = str(input('Ingrese el producto: '))
+        if(producto=="FIN"):
+            break
+        cantidad = int(input('Cantidad a ingresar: '))
+        for k,v in strock.items():
+            if(k==producto):
+                v+=cantidad
+                strock[producto] = v
+                encontrado=True
+                break
+            else:
+                encontrado=False
+                
+        if(encontrado==False):
+            print("Producto inexistente vuelva a ingresar...\n")
+                     
+    # -------- Fin del bucle
+    print(strock)
+    
 
 if __name__ == '__main__':
+    os.system ("cls")
     print("Bienvenidos a otra clase de Inove con Python")
     ej1()
     ej2()
